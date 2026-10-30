@@ -1,0 +1,1660 @@
+{
+  "version": "0.2.0",
+  "generated_at": "2026-10-30T23:31:22.868024",
+  "source": "Illustrative sequences chosen solely for UI demonstration; not experimental sample identifications or validated bioactivities.",
+  "computation": "Actual local descriptor_table and score_activity; no ML predictions, measured IC50, docking, sample quantities or identification q-values.",
+  "module_sha256": {
+    "descriptors.py": "38b5496ebd3d71938c6de515933ff1264cc71c71a01630352e619fbc90fa4b24",
+    "profiles.py": "4359890855173939ead71b4ae2d822b26cfee9ccec9d3792838f01938f17b6b4"
+  },
+  "profiles": [
+    {
+      "key": "ace",
+      "label": "ACE 抑制/降压（重点）",
+      "short_label": "ACE 抑制",
+      "description": "按长度、C 端及疏水特征优先筛选 ACE 抑制肽。",
+      "translations": {
+        "zh": {
+          "label": "ACE 抑制",
+          "description": "按肽长、C端和疏水特征探索ACE抑制候选。"
+        },
+        "en": {
+          "label": "ACE inhibition",
+          "description": "Explore length, C-terminal residues and hydrophobic features."
+        }
+      }
+    },
+    {
+      "key": "antioxidant",
+      "label": "抗氧化",
+      "short_label": "抗氧化",
+      "description": "按芳香族和潜在供电子/螯合残基排序。",
+      "translations": {
+        "zh": {
+          "label": "抗氧化",
+          "description": "结合芳香族与潜在供电子、螯合残基解析序列特征。"
+        },
+        "en": {
+          "label": "Antioxidant",
+          "description": "Explore aromatic residues and features associated with electron donation or chelation."
+        }
+      }
+    },
+    {
+      "key": "antimicrobial",
+      "label": "抗菌",
+      "short_label": "抗菌",
+      "description": "按阳离子性、长度和疏水比例排序。",
+      "translations": {
+        "zh": {
+          "label": "抗菌",
+          "description": "结合净电荷、肽长与疏水比例探索候选。"
+        },
+        "en": {
+          "label": "Antimicrobial",
+          "description": "Explore net charge, length and hydrophobic balance."
+        }
+      }
+    },
+    {
+      "key": "anti_inflammatory",
+      "label": "抗炎",
+      "short_label": "抗炎",
+      "description": "生成保守的探索性序列优先级。",
+      "translations": {
+        "zh": {
+          "label": "抗炎",
+          "description": "按组成与理化特征组织抗炎方向的探索候选。"
+        },
+        "en": {
+          "label": "Anti-inflammatory",
+          "description": "Organize exploratory candidates using composition and molecular properties."
+        }
+      }
+    },
+    {
+      "key": "dpp4",
+      "label": "DPP-IV 抑制/降糖",
+      "short_label": "DPP-IV 抑制",
+      "description": "按 N 端和脯氨酸相关特征排序。",
+      "translations": {
+        "zh": {
+          "label": "DPP-IV 抑制",
+          "description": "按N端及脯氨酸相关特征探索DPP-IV抑制候选。"
+        },
+        "en": {
+          "label": "DPP-IV inhibition",
+          "description": "Explore N-terminal and proline-related features for DPP-IV research."
+        }
+      }
+    },
+    {
+      "key": "alpha_glucosidase",
+      "label": "α-葡萄糖苷酶抑制",
+      "short_label": "α-葡萄糖苷酶",
+      "description": "按长度、芳香性、碱性和疏水性排序。",
+      "translations": {
+        "zh": {
+          "label": "α-葡萄糖苷酶抑制",
+          "description": "结合肽长、芳香性、碱性与疏水特征探索候选。"
+        },
+        "en": {
+          "label": "α-Glucosidase inhibition",
+          "description": "Explore length, aromaticity, basic residues and hydrophobic features."
+        }
+      }
+    },
+    {
+      "key": "general",
+      "label": "广谱潜在生物活性",
+      "short_label": "广谱探索",
+      "description": "通用候选发现，不代表特定活性。",
+      "translations": {
+        "zh": {
+          "label": "广谱活性探索",
+          "description": "整合肽长、残基组成与端基特征，组织候选清单。"
+        },
+        "en": {
+          "label": "General bioactivity",
+          "description": "Combine length, composition and terminal features to organize candidates."
+        }
+      }
+    }
+  ],
+  "peptides": [
+    {
+      "peptide": "AKLPEWP",
+      "length": 7,
+      "monoisotopic_mass": 839.45413919507,
+      "charge_ph7": -0.0005356117134469596,
+      "isoelectric_point": 6.94189453125,
+      "gravy": -0.8428571428571429,
+      "hydrophobic_fraction": 0.42857142857142855,
+      "n_terminal": "A",
+      "c_terminal": "P",
+      "id": "DEMO-01",
+      "scores": {
+        "ace": {
+          "score": 95.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；C 端 P 为常见疏水/芳香/脯氨酸特征；倒数第二位 W 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "C 端 P 为常见疏水/芳香/脯氨酸特征",
+              "倒数第二位 W 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "C-terminal P contributes a hydrophobic, aromatic or proline-related feature.",
+              "Penultimate residue W contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 53.0,
+          "reasons": "含 1 个芳香族残基(F/W/Y)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 1 个芳香族残基(F/W/Y)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "1 aromatic residue(s) (F/W/Y).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 66.994,
+          "reasons": "长度位于常见抗菌肽范围；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 68.571,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证；含 W/Y/H 等常见功能性残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级",
+              "含 W/Y/H 等常见功能性残基"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties.",
+              "The sequence contains W, Y or H residues."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 50.571,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 83.571,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序；C 端含芳香/疏水残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级",
+              "C 端含芳香/疏水残基"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features.",
+              "An aromatic or hydrophobic residue occurs at the C terminus."
+            ]
+          }
+        },
+        "general": {
+          "score": 82.857,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "GQPVLFP",
+      "length": 7,
+      "monoisotopic_mass": 756.41702541036,
+      "charge_ph7": -0.0020157006072527572,
+      "isoelectric_point": 6.01220703125,
+      "gravy": 0.5285714285714286,
+      "hydrophobic_fraction": 0.42857142857142855,
+      "n_terminal": "G",
+      "c_terminal": "P",
+      "id": "DEMO-02",
+      "scores": {
+        "ace": {
+          "score": 90.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；C 端 P 为常见疏水/芳香/脯氨酸特征；倒数第二位 F 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "C 端 P 为常见疏水/芳香/脯氨酸特征",
+              "倒数第二位 F 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "C-terminal P contributes a hydrophobic, aromatic or proline-related feature.",
+              "Penultimate residue F contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 53.0,
+          "reasons": "含 1 个芳香族残基(F/W/Y)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 1 个芳香族残基(F/W/Y)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "1 aromatic residue(s) (F/W/Y).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 66.976,
+          "reasons": "长度位于常见抗菌肽范围；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 58.571,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 50.571,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 73.571,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序；C 端含芳香/疏水残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级",
+              "C 端含芳香/疏水残基"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features.",
+              "An aromatic or hydrophobic residue occurs at the C terminus."
+            ]
+          }
+        },
+        "general": {
+          "score": 75.0,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "WLPYPA",
+      "length": 6,
+      "monoisotopic_mass": 745.37991162565,
+      "charge_ph7": -0.0028661148255656466,
+      "isoelectric_point": 5.93701171875,
+      "gravy": 0.03333333333333329,
+      "hydrophobic_fraction": 0.6666666666666666,
+      "n_terminal": "W",
+      "c_terminal": "A",
+      "id": "DEMO-03",
+      "scores": {
+        "ace": {
+          "score": 75.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；倒数第二位 P 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "倒数第二位 P 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "Penultimate residue P contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 66.0,
+          "reasons": "含 2 个芳香族残基(F/W/Y)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 2 个芳香族残基(F/W/Y)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "2 aromatic residue(s) (F/W/Y).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 51.966,
+          "reasons": "长度位于常见抗菌肽范围",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 85.0,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证；含 W/Y/H 等常见功能性残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级",
+              "含 W/Y/H 等常见功能性残基"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties.",
+              "The sequence contains W, Y or H residues."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 73.0,
+          "reasons": "N 端为疏水/芳香残基",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "N 端为疏水/芳香残基"
+            ],
+            "en": [
+              "A hydrophobic or aromatic residue occurs at the N terminus."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 80.0,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features."
+            ]
+          }
+        },
+        "general": {
+          "score": 85.0,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "HCMGYP",
+      "length": 6,
+      "monoisotopic_mass": 706.2567023418201,
+      "charge_ph7": 0.02606826015816699,
+      "isoelectric_point": 7.07861328125,
+      "gravy": -0.3500000000000001,
+      "hydrophobic_fraction": 0.5,
+      "n_terminal": "H",
+      "c_terminal": "P",
+      "id": "DEMO-04",
+      "scores": {
+        "ace": {
+          "score": 90.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；C 端 P 为常见疏水/芳香/脯氨酸特征；倒数第二位 Y 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "C 端 P 为常见疏水/芳香/脯氨酸特征",
+              "倒数第二位 Y 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "C-terminal P contributes a hydrophobic, aromatic or proline-related feature.",
+              "Penultimate residue Y contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 80.0,
+          "reasons": "含 1 个芳香族残基(F/W/Y)；含 3 个潜在供电子/螯合残基(H/C/M)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 1 个芳香族残基(F/W/Y)",
+              "含 3 个潜在供电子/螯合残基(H/C/M)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "1 aromatic residue(s) (F/W/Y).",
+              "3 residue(s) associated with electron donation or chelation features (H/C/M).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 67.313,
+          "reasons": "长度位于常见抗菌肽范围；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 73.542,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证；含 W/Y/H 等常见功能性残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级",
+              "含 W/Y/H 等常见功能性残基"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties.",
+              "The sequence contains W, Y or H residues."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 52.0,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 90.833,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序；C 端含芳香/疏水残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级",
+              "C 端含芳香/疏水残基"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features.",
+              "An aromatic or hydrophobic residue occurs at the C terminus."
+            ]
+          }
+        },
+        "general": {
+          "score": 89.167,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "KRLVAFK",
+      "length": 7,
+      "monoisotopic_mass": 860.55960732312,
+      "charge_ph7": 2.997390920388489,
+      "isoelectric_point": 11.69287109375,
+      "gravy": 0.04285714285714277,
+      "hydrophobic_fraction": 0.5714285714285714,
+      "n_terminal": "K",
+      "c_terminal": "K",
+      "id": "DEMO-05",
+      "scores": {
+        "ace": {
+          "score": 71.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；倒数第二位 F 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "倒数第二位 F 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "Penultimate residue F contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 53.0,
+          "reasons": "含 1 个芳香族残基(F/W/Y)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 1 个芳香族残基(F/W/Y)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "1 aromatic residue(s) (F/W/Y).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 95.0,
+          "reasons": "长度位于常见抗菌肽范围；pH 7 预测净电荷为正(3.0)；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "pH 7 预测净电荷为正(3.0)",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Calculated net charge at pH 7 is positive (3.0).",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 79.286,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 41.429,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 89.286,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features."
+            ]
+          }
+        },
+        "general": {
+          "score": 82.857,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "DDEEASG",
+      "length": 7,
+      "monoisotopic_mass": 721.2402428168501,
+      "charge_ph7": -3.9975724868056233,
+      "isoelectric_point": 2.74462890625,
+      "gravy": -1.9142857142857144,
+      "hydrophobic_fraction": 0.14285714285714285,
+      "n_terminal": "D",
+      "c_terminal": "G",
+      "id": "DEMO-06",
+      "scores": {
+        "ace": {
+          "score": 28.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa)."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 30.0,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 30.0,
+          "reasons": "长度位于常见抗菌肽范围",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 35.714,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 32.857,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 36.429,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features."
+            ]
+          }
+        },
+        "general": {
+          "score": 40.714,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "VPAQIP",
+      "length": 6,
+      "monoisotopic_mass": 623.36426156151,
+      "charge_ph7": -0.0020157006072527572,
+      "isoelectric_point": 6.01220703125,
+      "gravy": 0.6333333333333334,
+      "hydrophobic_fraction": 0.5,
+      "n_terminal": "V",
+      "c_terminal": "P",
+      "id": "DEMO-07",
+      "scores": {
+        "ace": {
+          "score": 90.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；C 端 P 为常见疏水/芳香/脯氨酸特征；倒数第二位 I 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "C 端 P 为常见疏水/芳香/脯氨酸特征",
+              "倒数第二位 I 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "C-terminal P contributes a hydrophobic, aromatic or proline-related feature.",
+              "Penultimate residue I contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 40.0,
+          "reasons": "疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "疏水比例适中"
+            ],
+            "en": [
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 66.976,
+          "reasons": "长度位于常见抗菌肽范围；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 50.0,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 100.0,
+          "reasons": "N 端第二位为 P（DPP-IV 底物/抑制剂常见特征）；N 端为疏水/芳香残基",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "N 端第二位为 P（DPP-IV 底物/抑制剂常见特征）",
+              "N 端为疏水/芳香残基"
+            ],
+            "en": [
+              "Residue P occupies the second N-terminal position, a feature used in the DPP-IV rules.",
+              "A hydrophobic or aromatic residue occurs at the N terminus."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 62.5,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序；C 端含芳香/疏水残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级",
+              "C 端含芳香/疏水残基"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features.",
+              "An aromatic or hydrophobic residue occurs at the C terminus."
+            ]
+          }
+        },
+        "general": {
+          "score": 65.0,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "LQWHPF",
+      "length": 6,
+      "monoisotopic_mass": 826.41260873626,
+      "charge_ph7": 0.08889339030183807,
+      "isoelectric_point": 7.84423828125,
+      "gravy": -0.4333333333333334,
+      "hydrophobic_fraction": 0.5,
+      "n_terminal": "L",
+      "c_terminal": "F",
+      "id": "DEMO-08",
+      "scores": {
+        "ace": {
+          "score": 87.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；C 端 F 为常见疏水/芳香/脯氨酸特征；倒数第二位 P 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "C 端 F 为常见疏水/芳香/脯氨酸特征",
+              "倒数第二位 P 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "C-terminal F contributes a hydrophobic, aromatic or proline-related feature.",
+              "Penultimate residue P contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 75.0,
+          "reasons": "含 2 个芳香族残基(F/W/Y)；含 1 个潜在供电子/螯合残基(H/C/M)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 2 个芳香族残基(F/W/Y)",
+              "含 1 个潜在供电子/螯合残基(H/C/M)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "2 aromatic residue(s) (F/W/Y).",
+              "1 residue(s) associated with electron donation or chelation features (H/C/M).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 68.067,
+          "reasons": "长度位于常见抗菌肽范围；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 80.711,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证；含 W/Y/H 等常见功能性残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级",
+              "含 W/Y/H 等常见功能性残基"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties.",
+              "The sequence contains W, Y or H residues."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 70.0,
+          "reasons": "N 端为疏水/芳香残基",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "N 端为疏水/芳香残基"
+            ],
+            "en": [
+              "A hydrophobic or aromatic residue occurs at the N terminus."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 99.167,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序；C 端含芳香/疏水残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级",
+              "C 端含芳香/疏水残基"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features.",
+              "An aromatic or hydrophobic residue occurs at the C terminus."
+            ]
+          }
+        },
+        "general": {
+          "score": 94.167,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "GKRLWKAL",
+      "length": 8,
+      "monoisotopic_mass": 970.6076201447,
+      "charge_ph7": 2.997390920388489,
+      "isoelectric_point": 11.69287109375,
+      "gravy": -0.525,
+      "hydrophobic_fraction": 0.5,
+      "n_terminal": "G",
+      "c_terminal": "L",
+      "id": "DEMO-09",
+      "scores": {
+        "ace": {
+          "score": 60.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；C 端 L 为常见疏水/芳香/脯氨酸特征；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "C 端 L 为常见疏水/芳香/脯氨酸特征",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "C-terminal L contributes a hydrophobic, aromatic or proline-related feature.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 53.0,
+          "reasons": "含 1 个芳香族残基(F/W/Y)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 1 个芳香族残基(F/W/Y)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "1 aromatic residue(s) (F/W/Y).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 95.0,
+          "reasons": "长度位于常见抗菌肽范围；pH 7 预测净电荷为正(3.0)；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "pH 7 预测净电荷为正(3.0)",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Calculated net charge at pH 7 is positive (3.0).",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 85.0,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证；含 W/Y/H 等常见功能性残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级",
+              "含 W/Y/H 等常见功能性残基"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties.",
+              "The sequence contains W, Y or H residues."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 40.0,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 95.0,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序；C 端含芳香/疏水残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级",
+              "C 端含芳香/疏水残基"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features.",
+              "An aromatic or hydrophobic residue occurs at the C terminus."
+            ]
+          }
+        },
+        "general": {
+          "score": 81.25,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "AGSTNQ",
+      "length": 6,
+      "monoisotopic_mass": 576.25035400808,
+      "charge_ph7": -0.0020157006072527572,
+      "isoelectric_point": 6.01220703125,
+      "gravy": -1.1833333333333333,
+      "hydrophobic_fraction": 0.16666666666666666,
+      "n_terminal": "A",
+      "c_terminal": "Q",
+      "id": "DEMO-10",
+      "scores": {
+        "ace": {
+          "score": 28.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa)."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 30.0,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 41.976,
+          "reasons": "长度位于常见抗菌肽范围",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 36.667,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 33.333,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 37.5,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features."
+            ]
+          }
+        },
+        "general": {
+          "score": 41.667,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "YPQFVP",
+      "length": 6,
+      "monoisotopic_mass": 749.3748262452101,
+      "charge_ph7": -0.0028661148255656466,
+      "isoelectric_point": 5.93701171875,
+      "gravy": -0.16666666666666674,
+      "hydrophobic_fraction": 0.5,
+      "n_terminal": "Y",
+      "c_terminal": "P",
+      "id": "DEMO-11",
+      "scores": {
+        "ace": {
+          "score": 90.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；C 端 P 为常见疏水/芳香/脯氨酸特征；倒数第二位 V 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "C 端 P 为常见疏水/芳香/脯氨酸特征",
+              "倒数第二位 V 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "C-terminal P contributes a hydrophobic, aromatic or proline-related feature.",
+              "Penultimate residue V contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 66.0,
+          "reasons": "含 2 个芳香族残基(F/W/Y)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 2 个芳香族残基(F/W/Y)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "2 aromatic residue(s) (F/W/Y).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 66.966,
+          "reasons": "长度位于常见抗菌肽范围；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 80.0,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证；含 W/Y/H 等常见功能性残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级",
+              "含 W/Y/H 等常见功能性残基"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties.",
+              "The sequence contains W, Y or H residues."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 100.0,
+          "reasons": "N 端第二位为 P（DPP-IV 底物/抑制剂常见特征）；N 端为疏水/芳香残基",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "N 端第二位为 P（DPP-IV 底物/抑制剂常见特征）",
+              "N 端为疏水/芳香残基"
+            ],
+            "en": [
+              "Residue P occupies the second N-terminal position, a feature used in the DPP-IV rules.",
+              "A hydrophobic or aromatic residue occurs at the N terminus."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 87.5,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序；C 端含芳香/疏水残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级",
+              "C 端含芳香/疏水残基"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features.",
+              "An aromatic or hydrophobic residue occurs at the C terminus."
+            ]
+          }
+        },
+        "general": {
+          "score": 85.0,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    },
+    {
+      "peptide": "METWPH",
+      "length": 6,
+      "monoisotopic_mass": 799.3323098102301,
+      "charge_ph7": -0.909331486952352,
+      "isoelectric_point": 5.13037109375,
+      "gravy": -1.3333333333333333,
+      "hydrophobic_fraction": 0.3333333333333333,
+      "n_terminal": "M",
+      "c_terminal": "H",
+      "id": "DEMO-12",
+      "scores": {
+        "ace": {
+          "score": 66.0,
+          "reasons": "长度位于常见短肽优选区间(2–12 aa)；倒数第二位 P 提供疏水/芳香端基特征；C 端三肽含 F/W/Y/P；整体疏水残基比例适中",
+          "evidence": "中等：文献启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见短肽优选区间(2–12 aa)",
+              "倒数第二位 P 提供疏水/芳香端基特征",
+              "C 端三肽含 F/W/Y/P",
+              "整体疏水残基比例适中"
+            ],
+            "en": [
+              "Length is within the selected short-peptide range (2–12 aa).",
+              "Penultimate residue P contributes a hydrophobic or aromatic terminal feature.",
+              "F/W/Y/P occurs within the C-terminal tripeptide.",
+              "Hydrophobic residue fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antioxidant": {
+          "score": 71.0,
+          "reasons": "含 1 个芳香族残基(F/W/Y)；含 2 个潜在供电子/螯合残基(H/C/M)；疏水比例适中",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "含 1 个芳香族残基(F/W/Y)",
+              "含 2 个潜在供电子/螯合残基(H/C/M)",
+              "疏水比例适中"
+            ],
+            "en": [
+              "1 aromatic residue(s) (F/W/Y).",
+              "2 residue(s) associated with electron donation or chelation features (H/C/M).",
+              "Hydrophobic fraction falls within the rule’s selected range."
+            ]
+          }
+        },
+        "antimicrobial": {
+          "score": 56.088,
+          "reasons": "长度位于常见抗菌肽范围；兼具阳离子性与适中疏水性所需的疏水比例",
+          "evidence": "中低：理化启发式",
+          "translations": {
+            "zh": [
+              "长度位于常见抗菌肽范围",
+              "兼具阳离子性与适中疏水性所需的疏水比例"
+            ],
+            "en": [
+              "Length is within the range selected by the antimicrobial rules.",
+              "Hydrophobic fraction falls within the rule’s selected balance range."
+            ]
+          }
+        },
+        "anti_inflammatory": {
+          "score": 66.667,
+          "reasons": "该类别仅作低证据序列优先级，需靶点或细胞实验验证；含 W/Y/H 等常见功能性残基",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "结合组成、电荷与理化特征形成探索优先级",
+              "含 W/Y/H 等常见功能性残基"
+            ],
+            "en": [
+              "Exploratory priority combines composition, charge and molecular properties.",
+              "The sequence contains W, Y or H residues."
+            ]
+          }
+        },
+        "dpp4": {
+          "score": 48.667,
+          "reasons": "无明显加分特征",
+          "evidence": "中低：文献启发式",
+          "translations": {
+            "zh": [
+              "该序列采用本方向规则的基础优先级"
+            ],
+            "en": [
+              "The selected rules assign the baseline priority to this sequence."
+            ]
+          }
+        },
+        "alpha_glucosidase": {
+          "score": 73.333,
+          "reasons": "α-葡萄糖苷酶序列规则证据有限，结果仅用于候选排序",
+          "evidence": "低：探索性",
+          "translations": {
+            "zh": [
+              "按长度、芳香性、碱性与疏水特征形成候选优先级"
+            ],
+            "en": [
+              "Candidate priority combines length, aromaticity, basic residues and hydrophobic features."
+            ]
+          }
+        },
+        "general": {
+          "score": 82.5,
+          "reasons": "短肽长度适合优先验证",
+          "evidence": "低：通用启发式",
+          "translations": {
+            "zh": [
+              "短肽长度适合优先验证"
+            ],
+            "en": [
+              "Peptide length is within the rule’s preferred short-peptide range."
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "ui": {
+    "zh": {
+      "university": "桂林医科大学",
+      "navWorkspace": "结果工作台",
+      "navMethods": "方法说明",
+      "heroTitle": "解读肽序列，发现研究价值。",
+      "heroLead": "连接序列特征与活性研究方向，在清晰可解释的证据中筛选候选，让下一步验证更有依据。",
+      "heroAction": "探索候选工作台",
+      "heroNote": "七种研究方向 · 理化特征解析 · 结果一键导出",
+      "sequenceFlow": "序列特征 → 候选优先级",
+      "exampleBadge": "示例体验",
+      "exampleIntro": "从12条示例序列出发，探索不同研究方向下的候选排序与特征解释。",
+      "viewMethods": "了解评分方法 ↗",
+      "workspaceTitle": "候选工作台",
+      "download": "↓ 导出当前结果 CSV",
+      "profile": "研究方向",
+      "search": "查找序列",
+      "searchPlaceholder": "例如：AKL 或 P",
+      "scoreMinimum": "规则分数下限",
+      "filterTitle": "按研究目标筛选",
+      "filterBody": "结合序列特征和评分依据，组织适合后续验证的候选清单。",
+      "reset": "重置筛选 ↺",
+      "sequenceCount": "候选序列",
+      "currentDirection": "当前方向",
+      "scoringType": "评分方式",
+      "transparentRules": "序列特征规则",
+      "loading": "正在加载示例…",
+      "selectRow": "选择序列查看详情",
+      "colSequence": "候选 / 序列",
+      "colLength": "长度",
+      "colScore": "规则分数 ↓",
+      "colHydro": "疏水残基比例",
+      "colCharge": "pH 7 净电荷",
+      "detailTitle": "让每一次排序，都有可读的依据。",
+      "detailLead": "连接组成、端基与理化特征，理解不同序列的优先级来源。",
+      "selectDetail": "选择上方候选查看详情。",
+      "methodsTitle": "从序列特征，形成研究线索。",
+      "methodOneTitle": "多方向候选探索",
+      "methodOneBody": "覆盖ACE抑制、抗氧化、抗菌、抗炎、DPP-IV抑制、α-葡萄糖苷酶抑制及广谱活性探索，按研究目标查看候选特征。",
+      "methodTwoTitle": "可解释的特征评分",
+      "methodTwoBody": "整合长度、端基、残基组成、疏水比例和电荷等特征，呈现逐条评分依据，帮助研究者建立候选优先级。",
+      "methodThreeTitle": "可追溯的结果交付",
+      "methodThreeBody": "提供筛选结果CSV与完整示例JSON，保留描述符、规则依据和来源指纹，衔接后续实验设计与研究记录。",
+      "methodDetails": "数据与评分说明",
+      "methodData": "本站使用12条人工指定的示例序列，展示本地程序预计算的理化描述符和0–100规则优先级。分数用于候选排序，活性效应由对应实验评价。",
+      "methodMetric": "分子质量采用未修饰线性肽的中性单同位素质量；净电荷按pH 7计算。示例包含规则评分与描述符，机器学习预测、实验IC₅₀和对接结果属于独立分析流程。",
+      "methodBrand": "校徽来源：桂林医科大学官网“校徽校旗”。本页为研究项目演示。",
+      "methodFooter": "将候选、特征与解释一起保存，让研究选择有据可循。",
+      "downloadJson": "下载完整示例与来源 JSON ↗",
+      "footer": "序列解析 · 候选优选 · 研究决策",
+      "empty": "没有符合条件的示例，请调整筛选。",
+      "example": "示例序列",
+      "rule": "规则",
+      "mass": "单同位素质量 / Da",
+      "pi": "理论等电点 pI",
+      "termini": "N 端 → C 端",
+      "reasons": "本方向的特征依据",
+      "detailFoot": "规则优先级 · 由序列特征计算",
+      "unavailable": "未计算",
+      "loadError": "示例加载失败，请刷新后重试。",
+      "tableCount": "显示 {n} / {total} 条示例序列 · 按规则分数排序",
+      "viewRow": "查看 {sequence} 的详情"
+    },
+    "en": {
+      "university": "Guilin Medical University",
+      "navWorkspace": "Workspace",
+      "navMethods": "Methods",
+      "heroTitle": "Read the sequence. Discover research potential.",
+      "heroLead": "Connect peptide features with bioactivity research. Explore interpretable candidate priorities and plan the next validation step with clearer evidence.",
+      "heroAction": "Explore the workspace",
+      "heroNote": "Seven research directions · Molecular descriptors · Export-ready results",
+      "sequenceFlow": "Sequence features → Candidate priority",
+      "exampleBadge": "EXAMPLE EXPLORER",
+      "exampleIntro": "Explore candidate rankings and feature explanations across 12 example sequences and seven research directions.",
+      "viewMethods": "How scoring works ↗",
+      "workspaceTitle": "Candidate workspace",
+      "download": "↓ Export current results · CSV",
+      "profile": "Research direction",
+      "search": "Find a sequence",
+      "searchPlaceholder": "For example: AKL or P",
+      "scoreMinimum": "Minimum rule score",
+      "filterTitle": "Focus on your research goal",
+      "filterBody": "Combine sequence features and scoring explanations to organize a focused candidate list for validation.",
+      "reset": "Reset filters ↺",
+      "sequenceCount": "Candidate sequences",
+      "currentDirection": "Research direction",
+      "scoringType": "Scoring approach",
+      "transparentRules": "Sequence feature rules",
+      "loading": "Loading examples…",
+      "selectRow": "Select a sequence for details",
+      "colSequence": "Candidate / sequence",
+      "colLength": "Length",
+      "colScore": "Rule score ↓",
+      "colHydro": "Hydrophobic fraction",
+      "colCharge": "Net charge at pH 7",
+      "detailTitle": "A clear rationale behind every ranking.",
+      "detailLead": "Explore composition, terminal residues and molecular properties to understand each candidate’s priority.",
+      "selectDetail": "Select a candidate above to explore its features.",
+      "methodsTitle": "Turn sequence features into research leads.",
+      "methodOneTitle": "Explore multiple directions",
+      "methodOneBody": "Browse ACE inhibition, antioxidant, antimicrobial, anti-inflammatory, DPP-IV inhibition, α-glucosidase inhibition and general bioactivity priorities.",
+      "methodTwoTitle": "Interpret feature-based scores",
+      "methodTwoBody": "Connect length, termini, residue composition, hydrophobicity and charge with per-sequence explanations for research prioritization.",
+      "methodThreeTitle": "Take traceable results forward",
+      "methodThreeBody": "Export filtered CSV results or the full example JSON, including descriptors, scoring explanations and source fingerprints for research records.",
+      "methodDetails": "About the data and scores",
+      "methodData": "This explorer presents 12 manually selected example sequences with precomputed molecular descriptors and rule-based priorities on a 0–100 scale. Scores support candidate ranking; corresponding experiments establish activity effects.",
+      "methodMetric": "Mass is the neutral monoisotopic mass of an unmodified linear peptide; charge is calculated at pH 7. Examples contain rule scores and descriptors. Machine-learning predictions, experimental IC₅₀ and docking results belong to separate analysis workflows.",
+      "methodBrand": "Emblem source: Guilin Medical University official website, University Emblem and Flag. This page is a research-project demonstration.",
+      "methodFooter": "Keep candidates, features and explanations together for informed research decisions.",
+      "downloadJson": "Download examples and provenance · JSON ↗",
+      "footer": "Sequence insight · Candidate priorities · Research decisions",
+      "empty": "No matching examples. Try adjusting the filters.",
+      "example": "Example sequence",
+      "rule": "Rule score",
+      "mass": "Monoisotopic mass / Da",
+      "pi": "Theoretical pI",
+      "termini": "N terminus → C terminus",
+      "reasons": "Feature rationale for this direction",
+      "detailFoot": "Rule-based priority · Calculated from sequence features",
+      "unavailable": "Not calculated",
+      "loadError": "Examples could not load. Please refresh and try again.",
+      "tableCount": "Showing {n} / {total} example sequences · Ranked by rule score",
+      "viewRow": "View details for {sequence}"
+    }
+  }
+}
