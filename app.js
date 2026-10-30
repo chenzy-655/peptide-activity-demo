@@ -1,61 +1,34 @@
 'use strict';
-let data,selectedId,language='zh';
-try{language=localStorage.getItem('peptide-atlas-language')==='en'?'en':'zh';}catch{}
-const $=id=>document.getElementById(id);
-const esc=value=>String(value).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
-const t=key=>data.ui[language][key];
-const profile=key=>data.profiles.find(p=>p.key===key).translations[language];
-const fmt=(n,d=2)=>Number.isFinite(n)?n.toFixed(d):t('unavailable');
-function setLanguage(lang){
- language=lang;try{localStorage.setItem('peptide-atlas-language',lang);}catch{}
- document.documentElement.lang=lang==='zh'?'zh-CN':'en';
- document.title=lang==='zh'?'Peptide Atlas · 多肽活性分析':'Peptide Atlas · Bioactivity Explorer';
- document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t(el.dataset.i18n));
- document.querySelectorAll('[data-placeholder]').forEach(el=>el.placeholder=t(el.dataset.placeholder));
- $('lang-zh').setAttribute('aria-pressed',String(lang==='zh'));$('lang-en').setAttribute('aria-pressed',String(lang==='en'));
- document.querySelector('.university img').alt=lang==='zh'?'桂林医科大学校徽':'Guilin Medical University emblem';
- const selected=$('profile').value||'ace';
- $('profile').innerHTML=data.profiles.map(p=>'<option value="'+p.key+'">'+esc(p.translations[lang].label)+'</option>').join('');
- $('profile').value=selected;
- if(!$('error').hidden)$('error').textContent=t('loadError');
- render();
-}
-function currentRows(){const query=$('search').value.trim().toUpperCase(),min=Number($('min-score').value),key=$('profile').value;return data.peptides.filter(r=>r.peptide.includes(query)&&r.scores[key].score>=min).sort((a,b)=>b.scores[key].score-a.scores[key].score||a.id.localeCompare(b.id));}
+let data,language='en',view='rank';
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const t=k=>data.replica_ui[language][k]||k;
+const tabs=['rank','algorithms','detail','network','docking','export','method'];
+const f=(k,v='—',type='text')=>'<div class="field"><label>'+esc(t(k))+'</label><input type="'+type+'" disabled value="'+esc(v)+'"></div>';
+const sel=(k,values)=>'<div class="field"><label>'+esc(t(k))+'</label><select disabled>'+values.map(v=>'<option>'+esc(v)+'</option>').join('')+'</select></div>';
+const b=(k,primary=false)=>'<button type="button" class="disabled-button'+(primary?' primary':'')+'" disabled>'+esc(t(k))+'</button>';
+const slider=(k,value)=>'<div class="field"><div class="range-label"><label>'+esc(t(k))+'</label><span>'+value+'</span></div><input type="range" min="0" max="100" value="'+value+'" disabled></div>';
+const upload=k=>'<div class="field"><label>'+esc(t(k))+'</label><div class="upload">CSV · '+esc(t('browse'))+'<br><input type="file" accept=".csv" disabled aria-label="'+esc(t(k))+'"></div></div>';
+const check=k=>'<label class="check"><input type="checkbox" disabled> '+esc(t(k))+'</label>';
+const h=k=>'<h2>'+esc(t(k))+'</h2>';
+function table(columns,rows){return '<div class="table-scroll"><table><thead><tr>'+columns.map(k=>'<th>'+esc(t(k))+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map((v,i)=>'<td'+(columns[i]==='peptide'?' class="sequence"':'')+'>'+esc(v)+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';}
+const placeholder=k=>'<div class="plot" role="img" aria-label="'+esc(t(k))+'"><span>'+esc(t(k))+' · '+esc(t('plotArea'))+'</span></div>';
+const note=()=>'<p class="caption">'+esc(t('dataNote'))+'</p>';
+const seqRows=columns=>data.peptides.map((r,i)=>columns.map(k=>({rankCol:i+1,peptide:r.peptide,length:r.length,rules:r.scores.ace.score,charge:r.charge_ph7.toFixed(2),mass:r.monoisotopic_mass.toFixed(3),pi:r.isoelectric_point.toFixed(2),GRAVY:r.gravy.toFixed(2)})[k]??'—'));
+function sidebar(){return '<aside>'+h('settings')+f('directory',t('folder'))+sel('csv',['Example / peptides.csv'])+upload('upload')+sel('activity',data.profiles.map(p=>p.translations[language].label))+'<p class="caption">'+esc(t('target'))+'</p><div class="group"><h3>'+esc(t('weights'))+'</h3>'+[['wActivity',40],['wArea',25],['wConfidence',20],['wChrom',10],['wRecurrence',5]].map(([k,n])=>slider(k,n)).join('')+'</div>'+slider('networkN',15)+slider('dockingN',20)+b('run',true)+'</aside>';}
+function rank(){const columns=['rankCol','peptide','priority','composite','activityScore','consensus','agreement','pLM4ACE-LR','pLM4ACE-SVM','AHTpin-IC50','dfbp','dfbpSim','dfbpSeq','rules','dbAdjust','aht','similarity','similarPeptides','weightedIc','minIc','area','areaSum','confidence','q','rt','rtPercentile','GRAVY','hydroClass','detected','psm','rationale'];return '<div class="grid three">'+slider('minScore',0)+sel('priority',['A / B / C'])+f('search',t('filter'))+'</div>'+note()+table(columns,seqRows(columns))+h('rankingPlot')+placeholder('rankingPlot')+b('downloadFiltered');}
+function algorithms(){return h('algorithmTitle')+sel('chooseAlgorithm',['pLM4ACE-LR','pLM4ACE-SVM','AHTpin-IC50','AHTPDB / Sequence rules'])+table(['rankCol','peptide','algorithmScore','modelLabel'],seqRows(['rankCol','peptide','algorithmScore','modelLabel']))+h('algorithmPlot')+placeholder('algorithmPlot')+b('algorithmDownload');}
+function detail(){const r=data.peptides[0];const props=[['length',r.length],['mass',r.monoisotopic_mass.toFixed(3)],['charge',r.charge_ph7.toFixed(2)],['pi',r.isoelectric_point.toFixed(2)],['GRAVY',r.gravy.toFixed(2)],['area','—'],['rt','—'],['rtPercentile','—'],['confidence','—'],['detected','—']];return sel('choosePeptide',data.peptides.map(p=>p.peptide))+'<div class="grid"><section><h2 class="mono">'+esc(r.peptide)+'</h2><p><b>'+esc(t('bioDirection'))+':</b> '+esc(data.profiles[0].translations[language].label)+'</p><p><b>'+esc(t('rationale'))+':</b> '+esc(r.scores.ace.translations[language].join('; '))+'</p><p><b>'+esc(t('multiModel'))+':</b> pLM4ACE-LR — / SVM — / AHTpin —</p><p><b>'+esc(t('database'))+':</b> AHTPDB — / DFBP —</p><p><b>'+esc(t('proteinSource'))+':</b> —</p><h3>'+esc(t('properties'))+'</h3>'+table(['metric','value'],props.map(([k,v])=>[t(k),v]))+'</section><section>'+h('spectra')+'<div class="grid">'+placeholder('ms1')+placeholder('ms2')+'</div>'+b('spectraLink')+'<h3>'+esc(t('observations'))+'</h3>'+table(['sample','psm','q','areaSum','area','rt','rtPercentile','coverage','explained','confidence'],[Array(10).fill('—')])+'</section></div>';}
+function network(){return '<p>'+esc(t('networkIntro'))+'</p><p class="caption">'+esc(t('networkLayout'))+'</p><div class="network">'+['peptide','targetNode','pathway','phenotype'].map(k=>'<span>'+esc(t(k))+'</span>').join('<i>→</i>')+'</div>'+b('downloadNodes')+b('downloadEdges')+'<div class="grid"><section>'+h('nodes')+table(['peptide','targetNode'],[['—','—']])+'</section><section>'+h('edges')+table(['targetNode','pathway'],[['—','—']])+'</section></div>';}
+function docking(){const columns=['submitCol','rankCol','peptide','length','composite','activityScore','confidence','area'];return h('preparation')+'<div class="subtle"><b>'+esc(t('receptor'))+':</b> human ACE (testicular C-domain)<br><b>'+esc(t('structure'))+':</b> PDB 1O86 · Chain A · '+esc(t('referenceLigand'))+': LPR (lisinopril)<br>'+esc(t('prepNote'))+'</div><h3>'+esc(t('pool'))+'</h3>'+table(['rankCol','peptide','length','composite','activityScore'],seqRows(['rankCol','peptide','length','composite','activityScore']))+b('poolCsv')+b('poolFasta')+'<h3>'+esc(t('selectSubmission'))+'</h3>'+check('selectAll')+table(columns,seqRows(columns))+b('selectedCsv')+b('selectedFasta')+h('nextSubmit')+sel('submissionMode',[t('website'),t('localApi')])+'<div class="grid three">'+f('chain','A')+f('bindingSite','162:A, 281:A, 353–356:A, …')+f('jobPrefix','peptide_candidate')+'</div>'+f('poseCount','100')+check('confirm')+b('submitJobs')+'<div class="grid">'+f('apiAddress','REST API endpoint')+f('apiToken','', 'password')+'</div>'+h('registry')+'<h3>'+esc(t('history'))+'</h3>'+f('resultUrl','https://…')+sel('choosePeptide',data.peptides.map(p=>p.peptide))+f('jobNote','')+b('saveHistory')+'<div>'+b('refresh')+b('archive')+b('bundle')+b('delete')+'</div>'+table(['jobId','peptide','state','energy','queryLink'],[Array(5).fill('—')])+'<h3>'+esc(t('recycle'))+'</h3>'+b('clear')+h('importResults')+upload('resultCsv')+b('merge');}
+function exportsView(){return '<p>'+esc(t('exportLead'))+'</p><div class="small-panel"><h3>CSV / FASTA / JSON / HTML / ZIP</h3><p class="caption">candidates.csv · observations.csv · descriptors.csv · network_nodes.csv · network_edges.csv · docking_queue.csv · peptides.fasta · config.json · report.html · activity_report_bundle.zip</p></div>'+f('outputDir','results / activity_analysis')+b('saveReport')+b('zip');}
+function method(){return '<div class="method">'+[['currentRules','rulesText'],['modelsTitle','modelsText'],['compositeTitle','compositeText'],['workflow','workflowText'],['presentation','presentationText']].map(([title,body])=>'<section>'+h(title)+'<p>'+esc(t(body))+'</p></section>').join('')+'<p class="caption">'+esc(t('sourceUi'))+'<br>'+esc(t('sourceLogo'))+'</p></div>';}
 function render(){
- const key=$('profile').value,rows=currentRows();
- $('profile-description').textContent=profile(key).description;$('direction').textContent=profile(key).label;
- $('min-value').textContent=$('min-score').value;$('count').textContent=rows.length;
- $('table-caption').textContent=t('tableCount').replace('{n}',rows.length).replace('{total}',data.peptides.length);
- if(!rows.some(r=>r.id===selectedId))selectedId=rows[0]?.id;
- $('rows').innerHTML=rows.length?rows.map(r=>'<tr class="'+(r.id===selectedId?'selected':'')+'" data-id="'+r.id+'"><td><button class="row-button" aria-label="'+esc(t('viewRow').replace('{sequence}',r.peptide))+'"><small>'+r.id+'</small><strong>'+esc(r.peptide)+'</strong></button></td><td>'+r.length+' aa</td><td><div class="score">'+fmt(r.scores[key].score,1)+'<span class="bar"><i style="width:'+r.scores[key].score+'%"></i></span></div></td><td>'+fmt(r.hydrophobic_fraction*100,0)+'%</td><td>'+fmt(r.charge_ph7)+'</td></tr>').join(''):'<tr><td colspan="5">'+esc(t('empty'))+'</td></tr>';
- $('download').disabled=!rows.length;renderDetail();
+ document.documentElement.lang=language==='en'?'en':'zh-CN';document.title=t('title');
+ document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
+ document.querySelector('.institution img').alt=language==='en'?'Guilin Medical University emblem':'桂林医科大学校徽';
+ document.querySelector('footer').textContent=t('footer');
+ const metrics=[['nonredundant','12'],['sampleN','—'],['priorityN','—'],['areaCoverage','—'],['medianQ','—']];
+ document.getElementById('application').innerHTML='<div class="shell">'+sidebar()+'<main><h1>'+esc(t('title'))+'</h1><p class="caption">'+esc(t('subtitle'))+'</p><span class="preview">'+esc(t('preview'))+'</span><div class="metrics">'+metrics.map(([k,v])=>'<div class="metric"><span>'+esc(t(k))+'</span><b>'+v+'</b></div>').join('')+'</div><nav class="tabs" role="tablist">'+tabs.map(k=>'<button type="button" role="tab" id="tab-'+k+'" aria-controls="panel" data-tab="'+k+'" aria-selected="'+(view===k)+'">'+esc(t(k))+'</button>').join('')+'</nav><section id="panel" role="tabpanel" aria-labelledby="tab-'+view+'">'+({rank,algorithms,detail,network,docking,export:exportsView,method}[view])()+'</section></main></div>';
 }
-function reasonsFor(r,key){return r.scores[key].translations[language];}
-function renderDetail(){
- const r=data.peptides.find(p=>p.id===selectedId),key=$('profile').value;
- if(!r){$('detail-content').textContent=t('empty');return;}
- const prop=(label,value)=>'<div><span>'+esc(label)+'</span><b>'+esc(value)+'</b></div>';
- $('detail-content').innerHTML='<div class="detail-top"><div><small>'+r.id+' / '+t('example')+'</small><h3>'+esc(r.peptide)+'</h3></div><span class="badge">'+t('rule')+' '+fmt(r.scores[key].score,1)+' / 100</span></div><div class="properties">'+
- prop(t('mass'),fmt(r.monoisotopic_mass,3))+prop(t('pi'),fmt(r.isoelectric_point))+prop('GRAVY',fmt(r.gravy))+prop(t('termini'),r.n_terminal+' → '+r.c_terminal)+prop(t('colHydro'),fmt(r.hydrophobic_fraction*100,0)+'%')+prop(t('colCharge'),fmt(r.charge_ph7))+
- '</div><strong>'+t('reasons')+'</strong><ul class="reasons">'+reasonsFor(r,key).map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul><p class="detail-foot">'+t('detailFoot')+'</p>';
-}
-function csvCell(value){let s=String(value??'');if(/^[=+@\u002d]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
-function downloadCSV(){
- const key=$('profile').value;
- const header=language==='zh'?['示例编号','肽序列','长度','研究方向','规则优先级分数','单同位素质量_Da','pH7净电荷','等电点','疏水残基比例','特征依据','数据来源']:['demo_id','peptide','length','research_direction','rule_priority_score','monoisotopic_mass_Da','charge_ph7','pI','hydrophobic_fraction','feature_rationale','data_source'];
- const source=language==='zh'?'演示序列；预计算描述符与规则优先级':'Illustrative sequences; precomputed descriptors and rule-based priorities';
- const rows=currentRows().map(r=>[r.id,r.peptide,r.length,profile(key).label,r.scores[key].score,r.monoisotopic_mass,r.charge_ph7,r.isoelectric_point,r.hydrophobic_fraction,reasonsFor(r,key).join('; '),source]);
- const content='\ufeff'+[header,...rows].map(row=>row.map(csvCell).join(',')).join('\r\n');
- const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='peptide_demo_'+key+'_'+language+'.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-async function init(){
- try{
- const response=await fetch('demo-data.json');if(!response.ok)throw new Error('data');data=await response.json();
- $('lang-zh').addEventListener('click',()=>setLanguage('zh'));$('lang-en').addEventListener('click',()=>setLanguage('en'));
- for(const id of ['profile','search','min-score'])$(id).addEventListener('input',render);
- $('rows').addEventListener('click',event=>{const row=event.target.closest('tr[data-id]');if(row){selectedId=row.dataset.id;render();}});
- $('reset').addEventListener('click',()=>{$('search').value='';$('min-score').value='0';$('profile').value='ace';render();});
- $('download').addEventListener('click',downloadCSV);setLanguage(language);
- }catch(error){$('error').hidden=false;$('error').textContent=language==='zh'?'示例加载失败，请刷新后重试。':'Examples could not load. Please refresh and try again.';$('table-caption').textContent=$('error').textContent;$('download').disabled=true;}
-}
-init();
+document.addEventListener('click',e=>{const lang=e.target.closest('button[data-lang]'),tab=e.target.closest('button[data-tab]');if(lang&&['en','zh'].includes(lang.dataset.lang)){language=lang.dataset.lang;if(data)render();}else if(tab&&tabs.includes(tab.dataset.tab)){view=tab.dataset.tab;render();}});
+fetch('demo-data.json').then(r=>{if(!r.ok)throw new Error('data');return r.json();}).then(d=>{data=d;render();}).catch(()=>{document.getElementById('application').textContent='The presentation could not load. Please refresh.';});
